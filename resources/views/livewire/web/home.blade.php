@@ -1,7 +1,7 @@
 <div>
     <div class="px-4 py-8 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8">
         @foreach ($films as $film)
-        <a href="{{ route('see') }}"
+        <a href="{{ route('see', $film.id) }}"
             class="relative w-full aspect-video bg-cover bg-center bg-no-repeat rounded-lg overflow-hidden shadow-lg transition hover:scale-105
                 bg-[image:var(--bg-film)]"
             style="--bg-film: url('{{ asset('storage/' . $film->cover) }}')">
@@ -20,7 +20,7 @@
         @endforeach
     </div>
 
-    <div class="mt-4 flex justify-center pb-8 gap-4">
+    <div class="mt-4 flex justify-center pb-8">
         {{ $films->links() }}
     </div>
 </div>
