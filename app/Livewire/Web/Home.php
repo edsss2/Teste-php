@@ -12,7 +12,7 @@ class Home extends Component
 
     public function render()
     {
-        $films = Film::latest()->paginate(4 );
+        $films = Film::latest()->paginate(8);
 
         return view('livewire.web.home', [
             'films' => $films

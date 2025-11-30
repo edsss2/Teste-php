@@ -31,7 +31,7 @@ class FilmForm extends Form
      * A imagem de capo do filme.
      * @var TemporaryUploadedFile|null
      */
-    #[Rule('required|image|max:1024|mimes:png,jpg')]
+    #[Rule('required|image|max:2048|mimes:png,jpg,jpeg')]
     public $cover;
 
     /**

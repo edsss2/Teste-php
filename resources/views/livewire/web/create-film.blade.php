@@ -1,12 +1,6 @@
 <div>
     <div class="max-w-screen-lg mx-auto px-4 py-8">
         <div>
-            @if (session('status'))
-            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
-                <span class="font-medium">Sucesso!</span> {{ session('status') }}
-            </div>
-            @endif
-
             <form wire:submit="save">
             </form>
         </div>
@@ -49,7 +43,7 @@
                 <label for="cover" class="font-semibold">
                     Capa
                 </label>
-                <input wire:model='form.cover' accept="image/png, image/jpeg" type="file" id="cover" class="rounded-lg border border-zinc-950 p-2">
+                <input wire:model='form.cover' accept="image/png, image/jpeg, image/jpg" type="file" id="cover" class="rounded-lg border border-zinc-950 p-2">
                 @error('form.cover')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror

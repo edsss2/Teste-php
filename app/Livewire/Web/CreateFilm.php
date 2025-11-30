@@ -18,6 +18,8 @@ class CreateFilm extends Component
         $this->form->store();
 
         session()->flash('status', 'Filme criado com sucesso!');
+
+        $this->redirectRoute('home', navigate: true);
     }
 
     public function render()

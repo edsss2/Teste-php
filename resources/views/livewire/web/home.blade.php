@@ -1,7 +1,15 @@
 <div>
+    @if (session('status'))
+    <div class="max-w-2xl">
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 w-auto" role="alert">
+            <span class="font-medium">Sucesso!</span> {{ session('status') }}
+        </div>
+    </div>
+    
+    @endif
     <div class="px-4 py-8 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-8">
         @foreach ($films as $film)
-        <a href="{{ route('see', $film.id) }}"
+        <a href="{{ route('see', $film->id) }}"
             class="relative w-full aspect-video bg-cover bg-center bg-no-repeat rounded-lg overflow-hidden shadow-lg transition hover:scale-105
                 bg-[image:var(--bg-film)]"
             style="--bg-film: url('{{ asset('storage/' . $film->cover) }}')">
