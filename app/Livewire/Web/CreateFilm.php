@@ -13,6 +13,12 @@ class CreateFilm extends Component
 
     public FilmForm $form;
 
+    /**
+     * Envia o formulário para o método de armazenamento, define uma
+     * mensagem de sucesso e redireciona o usuário para a página home.
+     * 
+     * @return \Illuminate\Http\RedirectResponse Retorna uma resposta de redirecionamento.
+     */
     public function create()
     {
         $this->form->store();

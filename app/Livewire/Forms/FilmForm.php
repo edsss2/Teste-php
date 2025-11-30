@@ -42,6 +42,15 @@ class FilmForm extends Form
     public $director = '';
 
 
+    /**
+     * Valida as informações do filme e o salva no banco de dados.
+     *
+     * Caso o usuário tenha anexado uma imagem de capa, ela é gravada na pasta
+     * pública de arquivos antes de o registro ser criado. Após o sucesso,
+     * todos os campos do formulário são resetados, ficando pronto para um novo filme.
+     *
+     * @return void
+     */
     public function store()
     {
         $this->validate();
