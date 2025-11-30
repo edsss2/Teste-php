@@ -1,6 +1,16 @@
 <div>
     <div class="max-w-screen-lg mx-auto px-4 py-8">
-        <form class="w-full px-4 py-8 bg-zinc-100 text-zinc-950 rounded-lg space-y-4">
+        <div>
+            @if (session('status'))
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+                <span class="font-medium">Sucesso!</span> {{ session('status') }}
+            </div>
+            @endif
+
+            <form wire:submit="save">
+            </form>
+        </div>
+        <form wire:submit.prevent='create' class="w-full px-4 py-8 bg-zinc-100 text-zinc-950 rounded-lg space-y-4">
             <h1 class="text-2xl font-bold text-center font-film">
                 Cadastrar Filme
             </h1>
@@ -9,21 +19,40 @@
                 <label for="title" class="font-semibold">
                     Título
                 </label>
-                <input type="text" id="title" class="rounded-lg border border-zinc-950 p-2">
+                <input wire:model='form.title' type="text" id="title" class="rounded-lg border border-zinc-950 p-2">
+                @error('form.title')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="flex flex-col gap-2 !mt-8">
+                <label for="director" class="font-semibold">
+                    Diretor
+                </label>
+                <input wire:model='form.director' type="text" id="director" class="rounded-lg border border-zinc-950 p-2">
+                @error('form.director')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="flex flex-col gap-2">
                 <label for="summary" class="font-semibold">
                     Resumo
                 </label>
-                <textarea id="summary" rows="6" class="rounded-lg border border-zinc-950 p-2"></textarea>
+                <textarea wire:model='form.summary' id="summary" rows="6" class="rounded-lg border border-zinc-950 p-2"></textarea>
+                @error('form.summary')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="flex flex-col gap-2">
                 <label for="cover" class="font-semibold">
                     Capa
                 </label>
-                <input type="file" id="cover" class="rounded-lg border border-zinc-950 p-2">
+                <input wire:model='form.cover' accept="image/png, image/jpeg" type="file" id="cover" class="rounded-lg border border-zinc-950 p-2">
+                @error('form.cover')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
 
             <button type="submit"
